@@ -4,6 +4,10 @@ submitButton.addEventListener("click", calculate);
 function calculate(e) {
   e.preventDefault();
   const date = document.querySelector("#Date").value;
-
-  console.log(date);
+  const year = date.slice(0, 4);
+  if (year % 400 === 0 || (year % 4 === 0 && year % 100 !== 0)) {
+    // leap
+  } else {
+    // no leap
+  }
 }

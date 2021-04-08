@@ -10,4 +10,7 @@ function calculate(e) {
   } else {
     // no leap
   }
+  // obj with the old calendar
+  // obj with new calendar
+  // match the days from old into the new calendar
 }

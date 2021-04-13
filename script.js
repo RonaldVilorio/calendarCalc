@@ -21,19 +21,19 @@ function calculate(e) {
     11: 26,
     12: 29,
   };
-  March - 1;
-  April - 2;
-  May - 3;
-  June - 4;
-  Quintilis - 5;
-  Sextilis - 6;
-  September - 7;
-  October - 8;
-  November - 9;
-  December - 10;
-  January - 11;
-  Febuary - 12;
-  LastMonth - 13;
+  // March - 1;
+  // April - 2;
+  // May - 3;
+  // June - 4;
+  // Quintilis - 5;
+  // Sextilis - 6;
+  // September - 7;
+  // October - 8;
+  // November - 9;
+  // December - 10;
+  // January - 11;
+  // Febuary - 12;
+  // LastMonth - 13;
   let calendar = {
     March: [
       1,
@@ -66,7 +66,6 @@ function calculate(e) {
       28,
     ],
     April: [
-      28,
       29,
       30,
       31,
@@ -366,7 +365,7 @@ function calculate(e) {
       307,
       308,
     ],
-    Febuary: [
+    February: [
       309,
       310,
       311,
@@ -396,7 +395,7 @@ function calculate(e) {
       335,
       336,
     ],
-    Month13: [
+    month13: [
       337,
       338,
       339,
@@ -427,12 +426,18 @@ function calculate(e) {
       364,
     ],
   };
-
+  // console.log(Object.values(calendar)[0]);
   if (year % 400 === 0 || (year % 4 === 0 && year % 100 !== 0)) {
     // leap +1
   } else {
     // no leap
     let totalDays = (month - 1) * 28 + day + extraDaysPerMonth[month - 1];
+    console.log(totalDays);
+    for (let i = 0; i < Object.values(calendar).length; i++) {
+      Object.values(calendar)[i].includes(totalDays)
+        ? console.log(Object.keys(calendar)[i])
+        : null;
+    }
   }
 
   // birthMonth - 1 * 28 + day + extraDayPerMonth - 1 = days

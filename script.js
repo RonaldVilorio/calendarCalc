@@ -35,7 +35,7 @@ function calculate(e) {
   // Febuary - 12;
   // LastMonth - 13;
   let calendar = {
-    March: [
+    March_1: [
       1,
       2,
       3,
@@ -65,7 +65,7 @@ function calculate(e) {
       27,
       28,
     ],
-    April: [
+    April_2: [
       29,
       30,
       31,
@@ -95,7 +95,7 @@ function calculate(e) {
       55,
       56,
     ],
-    May: [
+    May_3: [
       57,
       58,
       59,
@@ -125,7 +125,7 @@ function calculate(e) {
       83,
       84,
     ],
-    June: [
+    June_4: [
       85,
       86,
       87,
@@ -155,7 +155,7 @@ function calculate(e) {
       111,
       112,
     ],
-    Quintilis: [
+    Quintilis_5: [
       113,
       114,
       115,
@@ -185,7 +185,7 @@ function calculate(e) {
       139,
       140,
     ],
-    Sextilis: [
+    Sextilis_6: [
       141,
       142,
       143,
@@ -215,7 +215,7 @@ function calculate(e) {
       167,
       168,
     ],
-    September: [
+    September_7: [
       169,
       170,
       171,
@@ -245,7 +245,7 @@ function calculate(e) {
       195,
       196,
     ],
-    October: [
+    October_8: [
       197,
       198,
       199,
@@ -275,7 +275,7 @@ function calculate(e) {
       223,
       224,
     ],
-    November: [
+    November_9: [
       225,
       226,
       227,
@@ -305,7 +305,7 @@ function calculate(e) {
       251,
       252,
     ],
-    December: [
+    December_10: [
       253,
       254,
       255,
@@ -335,7 +335,7 @@ function calculate(e) {
       279,
       280,
     ],
-    January: [
+    January_11: [
       281,
       282,
       283,
@@ -365,7 +365,7 @@ function calculate(e) {
       307,
       308,
     ],
-    February: [
+    February_12: [
       309,
       310,
       311,
@@ -395,7 +395,7 @@ function calculate(e) {
       335,
       336,
     ],
-    month13: [
+    lastMonth_13: [
       337,
       338,
       339,
@@ -426,18 +426,23 @@ function calculate(e) {
       364,
     ],
   };
-  // console.log(Object.values(calendar)[0]);
   if (year % 400 === 0 || (year % 4 === 0 && year % 100 !== 0)) {
     // leap +1
   } else {
-    // no leap
+    let newMonth = "";
     let totalDays = (month - 1) * 28 + day + extraDaysPerMonth[month - 1];
-    console.log(totalDays);
     for (let i = 0; i < Object.values(calendar).length; i++) {
       Object.values(calendar)[i].includes(totalDays)
-        ? console.log(Object.keys(calendar)[i])
+        ? (newMonth = Object.keys(calendar)[i])
         : null;
     }
+    let newMonthName = newMonth.split("_")[0];
+    let newMonthNum = newMonth.split("_")[1];
+
+    let newDay = totalDays - (newMonthNum - 1) * 28;
+    console.log(
+      `Real Birthday: ${newMonthName} ${newDay} ${newMonthNum}/${newDay}`
+    );
   }
 
   // birthMonth - 1 * 28 + day + extraDayPerMonth - 1 = days

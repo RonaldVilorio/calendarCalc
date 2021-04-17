@@ -428,6 +428,21 @@ function calculate(e) {
   };
   if (year % 400 === 0 || (year % 4 === 0 && year % 100 !== 0)) {
     // leap +1
+    let newMonth = "";
+    let totalDays = (month - 1) * 28 + day + extraDaysPerMonth[month - 1];
+    for (let i = 0; i < Object.values(calendar).length; i++) {
+      Object.values(calendar)[i].includes(totalDays)
+        ? (newMonth = Object.keys(calendar)[i])
+        : null;
+    }
+    let newMonthName = newMonth.split("_")[0];
+    let newMonthNum = newMonth.split("_")[1];
+
+    let newDay = totalDays - (newMonthNum - 1) * 28;
+
+    document.querySelector(".date").textContent = `Real Date: ${newMonthName} ${
+      newDay + 1
+    } ${newMonthNum}/${newDay + 1} ${year}`;
   } else {
     let newMonth = "";
     let totalDays = (month - 1) * 28 + day + extraDaysPerMonth[month - 1];
@@ -440,16 +455,8 @@ function calculate(e) {
     let newMonthNum = newMonth.split("_")[1];
 
     let newDay = totalDays - (newMonthNum - 1) * 28;
-    console.log(
-      `Real Birthday: ${newMonthName} ${newDay} ${newMonthNum}/${newDay}`
-    );
+    document.querySelector(
+      ".date"
+    ).textContent = `Real Date: ${newMonthName} ${newDay} ${newMonthNum}/${newDay} ${year}`;
   }
-
-  // birthMonth - 1 * 28 + day + extraDayPerMonth - 1 = days
-  // ex: 11/22
-  //  (10) * 28 + 22 + (10) = 326 days/year
-
-  // obj with the old calendar
-  // obj with new calendar
-  // match the days from old into the new calendar
 }

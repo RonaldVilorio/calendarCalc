@@ -457,6 +457,6 @@ function calculate(e) {
     let newDay = totalDays - (newMonthNum - 1) * 28;
     document.querySelector(
       ".date"
-    ).textContent = `Real Date: ${newMonthName} ${newDay} ${newMonthNum}/${newDay} ${year}`;
+    ).textContent = `New Date: ${newMonthName} ${newDay} ${newMonthNum}/${newDay} ${year}`;
   }
 }
